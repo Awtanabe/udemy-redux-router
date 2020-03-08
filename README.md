@@ -1,25 +1,27 @@
-# ReduxSimpleStarter
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
 
-### Getting Started
+## route
 
-There are two methods for getting started with this repo.
+- index
 
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
+Router from 'react-redux'
 
-```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
-> npm install
-> npm start
-```
+- routes.js
 
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
+```javascript
+//初期設定
+export default (
+ <Route path="path" component={App}>
+)
 
-```
-> npm install
-> npm start
+// ネスト
+export default (
+ <Route path="/" component={App}>
+   <Route path="greet" component={Greeting}/>
+ </Route> 
+)
+
+// App component
+
+{this.prpos.children}
 ```
