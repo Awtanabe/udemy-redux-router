@@ -13,6 +13,9 @@ class PostsNew extends Component {
           <label>Title</label>
            {/* formProps={...title}   onChange={title.onChange} */}
           <input type="text" className="form-control" onChange={title.onChange}/>
+          <div className="text-help">
+           {title.touched ? title.error : ''}
+          </div>
         </div>
         <div className="form-group">
           <label>Categories</label>
@@ -28,6 +31,17 @@ class PostsNew extends Component {
   }
 }
 
+
+function validate(values) {
+  const errors = {};
+
+  if (!values.title) {
+    errors.title = 'Enture a usernmae'
+  }
+  return errors
+}
+
+
 // connect: first argument is mapStateToProps, 2ndv is mapDispatchToProps
 // reduxForm: 1 form formconfig, 2 is mapStateToProps, 3 is mapDispatchToProps
 
@@ -35,6 +49,7 @@ class PostsNew extends Component {
 export default reduxForm ({
  form: 'PostsNewForm',
  fields: ['title', 'categories', 'content'],
+ validate,
  initialValue: {title:"", categories:"",content: "" }
 }, null, {createPost})(PostsNew)
 
