@@ -14,8 +14,16 @@ class PostsShow extends Component {
     if (!this.props.post) {
       return <div>Logind......</div>
     }
+
+    const {post} = this.props
     console.log(this.props.post)
-    return <div>Show post {this.props.params.id}</div>
+    return (
+      <div>
+        <h3>{post.title}</h3>
+        <h6>Categoris: {post.categoris}</h6>
+        <p>{post.content}</p>
+      </div>
+    )
   }
 }
 
