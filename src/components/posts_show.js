@@ -11,6 +11,9 @@ class PostsShow extends Component {
   //  console.log(re)
   }
   render(){
+    if (!this.props.post) {
+      return <div>Logind......</div>
+    }
     console.log(this.props.post)
     return <div>Show post {this.props.params.id}</div>
   }
