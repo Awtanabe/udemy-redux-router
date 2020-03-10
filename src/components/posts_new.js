@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {reduxForm} from 'redux-form'
 import {createPost} from '../actions/index'
+import {Link} from 'react-router'
 
 class PostsNew extends Component {
   render(){
@@ -9,7 +10,7 @@ class PostsNew extends Component {
     
     return (
       <form onSubmit={handleSubmit(this.props.createPost)}>
-        <div className="form-group">
+        <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
           <label>Title</label>
            {/* formProps={...title}   onChange={title.onChange} */}
           <input type="text" className="form-control" onChange={title.onChange}/>
@@ -20,12 +21,19 @@ class PostsNew extends Component {
         <div className="form-group">
           <label>Categories</label>
           <input type="text" className="form-control"  onChange={categories.onChange}/>
+          <div className="text-help">
+           {categories.touched ? title.error : ''}
+          </div>
         </div>
         <div className="form-group">
           <label>Content</label>
           <textarea className="form-control"  onChange={content.onChange}/>
+          <div className="text-help">
+           {content.touched ? title.error : ''}
+          </div>
         </div>
-        <button type="submit" className="btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Submit</button>
+        <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
     )
   }
@@ -37,6 +45,14 @@ function validate(values) {
 
   if (!values.title) {
     errors.title = 'Enture a usernmae'
+  }
+
+  if (!values.categories) {
+    errors.categories = 'Enture a categories'
+  }
+
+  if (!values.content) {
+    errors.content = 'Enture a content'
   }
   return errors
 }
