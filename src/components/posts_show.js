@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchPost} from '../actions/index'
+import {Link} from 'react-router'
 
 class PostsShow extends Component {
   componentWillMount(){
@@ -19,6 +20,7 @@ class PostsShow extends Component {
     console.log(this.props.post)
     return (
       <div>
+        <Link to="/">Back to INdex</Link>
         <h3>{post.title}</h3>
         <h6>Categoris: {post.categoris}</h6>
         <p>{post.content}</p>
